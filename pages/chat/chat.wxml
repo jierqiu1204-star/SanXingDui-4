@@ -1,0 +1,79 @@
+
+<image class="bg-image" src="/images/dialog/dialog-bg.png" />
+<view class="chat-container">
+  <!-- 欢迎页面 -->
+  <view class="welcome-section" wx:if="{{messages.length === 0}}">
+    <image class="welcome-image" src="/images/dialog/SanXingDui.png" mode="aspectFit"/>
+    <view class="welcome-text">
+      <text>嗨！我是 DeepSeek</text>
+      <text>我可以帮你搜索、答疑、写作，请把你的任务交给我吧~</text>
+    </view>
+  </view>
+
+  <!-- 对话页面 -->
+  <scroll-view 
+    class="message-list" 
+    scroll-y 
+    scroll-into-view="msg-{{messages.length-1}}"
+    wx:if="{{messages.length > 0}}"
+  >
+    <view 
+      class="message-item {{item.type === 'user' ? 'user' : 'service'}}"
+      wx:for="{{messages}}"
+      wx:key="id"
+      id="msg-{{index}}"
+    >
+      <image class="avatar" src="{{item.avatar}}" mode="aspectFill"/>
+      <view class="message-content">
+        <view class="name">{{item.name}}</view>
+        <view class="content">
+          <image 
+            wx:if="{{item.isImage}}" 
+            src="{{item.content}}" 
+            mode="widthFix" 
+            class="content-image"
+          />
+          <text wx:else>{{item.content}}</text>
+        </view>
+        <view class="time">{{item.time}}</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <image 
+      class="voice-icon" 
+      src="/assets/images/voice.png" 
+      mode="aspectFit"
+    />
+    <view class="input-box">
+      <input 
+        type="text"
+        value="{{inputValue}}"
+        bindinput="handleInput"
+        bindconfirm="sendMessage"
+        confirm-type="send"
+        placeholder="请输入消息..."
+      />
+    </view>
+    <image 
+      class="send-btn" 
+      src="/images/dialog/Scroll Up.png" 
+      mode="aspectFit"
+      bindtap="sendMessage"
+    />
+    <image 
+      class="camera-icon" 
+      src="/assets/images/camera.png" 
+      mode="aspectFit"
+      bindtap="chooseImage"
+    />
+    <image 
+      class="emoji-icon" 
+      src="/assets/images/emoji.png" 
+      mode="aspectFit"
+      bindtap="toggleEmojiPanel"
+    />
+  </view>
+</view> 

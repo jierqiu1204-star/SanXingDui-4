@@ -1,0 +1,44 @@
+<view class="course-detail">
+  <image class="course-image" src="{{course.image}}" mode="aspectFill"></image>
+  
+  <!-- 浅绿色卡片 -->
+  <view class="main-card">
+    <view class="course-title">{{course.title}}</view>
+    <view class="course-basic-info">
+      <text>{{course.duration}}</text>
+      <text>{{course.price}}</text>
+    </view>
+    <view class="course-people">{{course.minPeople}}</view>
+
+    <!-- 浅黄色卡片 -->
+    <view class="detail-card">
+      <!-- 活动形式 -->
+      <view class="info-section">
+        <view class="section-title">活动形式</view>
+        <view class="section-content">{{course.format}}</view>
+      </view>
+
+      <!-- 活动内容 -->
+      <view class="info-section">
+        <view class="section-title">活动内容</view>
+        <rich-text class="section-content" nodes="{{course.contentNodes}}"></rich-text>
+      </view>
+
+      <!-- 活动掠影 -->
+      <view class="info-section">
+        <view class="section-title">活动掠影</view>
+        <view class="section-content">
+          <image class="activity-image" src="{{course.activityImage}}" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部购买按钮 -->
+  <view class="bottom-actions">
+    <view class="action-button">
+      <view class="cart-btn" bindtap="addToCart">加入购物车</view>
+      <view class="buy-btn" bindtap="buyNow">立即购买</view>
+    </view>
+  </view>
+</view> 

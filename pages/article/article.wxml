@@ -1,0 +1,23 @@
+<view class="container">
+  <image class="bg-image" src="/images/common/green.png" />
+  <view class="articles">
+    <view class="article-item" 
+          wx:for="{{articles}}" 
+          wx:key="id"
+          bindtap="onTapArticle"
+          data-id="{{item.id}}">
+      <view class="image-section">
+        <image class="article-image" src="{{item.image}}" mode="aspectFill"></image>
+      </view>
+      <view class="info-section">
+        <view class="article-title-row">
+          <view class="article-title" bindtap="onTapArticle" data-id="{{item.id}}">{{item.title}}</view>
+          <view class="collect-btn" catchtap="toggleCollect" data-id="{{item.id}}">
+            <image class="star-icon" src="/images/icon/{{item.isCollected ? 'star-filled.png' : 'star.png'}}"></image>
+          </view>
+        </view>
+        <view class="article-date">{{item.date}}</view>
+      </view>
+    </view>
+  </view>
+</view> 

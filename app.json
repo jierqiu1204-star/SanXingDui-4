@@ -1,0 +1,79 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mall/mall",
+    "pages/cart/cart",
+    "pages/profile/profile",
+    "pages/activity/activity",
+    "pages/activity-detail/activity-detail",
+    "pages/article/article",
+    "pages/article-detail/article-detail",
+    "pages/article/article-content/article-content",
+    "pages/logs/logs",
+    "pages/product-detail/product-detail",
+    "pages/collection/collection",
+    "pages/login/login",
+    "pages/orders/orders",
+    "pages/order-detail/order-detail",
+    "pages/address/address",
+    "pages/address-edit/address-edit",
+    "pages/chat/chat",
+    "pages/logistics/logistics",
+    "pages/order-confirm/order-confirm",
+    "pages/payment-success/payment-success",
+    "pages/course/course",
+    "pages/course-detail/course-detail",
+    "pages/product/product",
+    "pages/web-view/web-view",
+    "pages/userProfile/userProfile",
+    "pages/about-us/about-us",
+    "pages/feedback/feedback"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#1C392F",
+    "backgroundColor": "#1C392F"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FFFFFF",
+    "backgroundColor": "#1C392F",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/common/tab_index.png",
+        "selectedIconPath": "images/common/tab_index.png"
+      },
+      {
+        "pagePath": "pages/mall/mall",
+        "text": "商城",
+        "iconPath": "images/common/tab_mall.png",
+        "selectedIconPath": "images/common/tab_mall.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "images/common/tab_cart.png",
+        "selectedIconPath": "images/common/tab_cart.png"
+      },
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "对话",
+        "iconPath": "images/common/tab_dialogue.png",
+        "selectedIconPath": "images/common/tab_dialogue.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/common/tab_my.png",
+        "selectedIconPath": "images/common/tab_my.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

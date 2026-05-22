@@ -1,0 +1,33 @@
+<view class="logistics-container">
+  <!-- 添加背景图片 -->
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+
+  <!-- 物流单号 - 根据状态显示不同内容 -->
+  <view class="tracking-number">
+    <block wx:if="{{status === '待发货'}}">
+      <view class="waiting-text">待发货</view>
+    </block>
+    <block wx:else>
+      <view class="carrier">{{carrier}}</view>
+      <view class="number">{{trackingNumber}}</view>
+    </block>
+  </view>
+
+  <!-- 物流时间线 -->
+  <view class="timeline">
+    <view class="timeline-item" 
+          wx:for="{{logisticsInfo}}" 
+          wx:key="index"
+          class="timeline-item {{index === 0 ? 'active' : ''}}">
+      <view class="time-line">
+        <view class="dot"></view>
+        <view class="line" wx:if="{{index !== logisticsInfo.length - 1}}"></view>
+      </view>
+      <view class="info">
+        <view class="status">{{item.status}}</view>
+        <view class="time">{{item.time}}</view>
+        <view class="detail">{{item.detail}}</view>
+      </view>
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,10 @@
+<view class="article-detail">
+  <view class="content-card">
+    <view class="title">特色课程介绍</view>
+    <view class="content">
+      欢迎来到星梦创学联的特色课程板块，我们致力于将文化、科技与创新教育相结合，为学生提供沉浸式、跨学科的学习体验。
+      
+      目前，我们已推出"3D建模与文化创新"课程，并即将上线更多精彩课程，涵盖STEAM跨学科教育、文博研学、多语种文化交流等方向，敬请期待！
+    </view>
+  </view>
+</view> 

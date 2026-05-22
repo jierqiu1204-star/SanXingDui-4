@@ -1,0 +1,22 @@
+<view class="login-container">
+  <view class="avatar-container">
+    <image class="default-avatar" src="/assets/images/default-avatar.png"></image>
+  </view>
+
+  <button class="login-btn {{!isPrivacyChecked ? 'disabled' : ''}}"
+          disabled="{{!isPrivacyChecked}}"
+          bindtap="handleWxLogin">
+    微信一键登录
+  </button>
+
+  <view class="privacy-container">
+    <view class="checkbox" bindtap="handlePrivacyCheck">
+      <icon type="success" size="16" color="#FFFFFF" wx:if="{{isPrivacyChecked}}"/>
+      <view class="checkbox-inner" wx:else></view>
+    </view>
+    <view class="privacy-text">
+      <text>点击阅读并同意</text>
+      <text class="privacy-link" bindtap="handlePrivacyTap">《隐私协议》</text>
+    </view>
+  </view>
+</view> 

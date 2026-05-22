@@ -1,0 +1,25 @@
+<view class="address-container">
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+  
+  <view class="address-list">
+    <view class="address-item" wx:for="{{addresses}}" wx:key="id">
+      <view class="address-content" bindtap="goToEdit" data-id="{{item.id}}">
+        <view class="address-header">
+          <text class="name">{{item.name}}</text>
+          <text class="phone">{{item.phone}}</text>
+        </view>
+        <view class="address-detail">{{item.address}}</view>
+      </view>
+      <view class="address-actions">
+        <view class="action-item" bindtap="setDefault" data-id="{{item.id}}">
+          <radio checked="{{item.isDefault}}" color="#1C392F"/>
+        </view>
+        <view class="action-item" bindtap="deleteAddress" data-id="{{item.id}}">
+          删除地址
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-address" bindtap="goToCreate">新建地址</view>
+</view> 

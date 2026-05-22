@@ -1,0 +1,39 @@
+<view class="edit-container">
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+  <view class="form-group">
+    <input 
+      class="input-item"
+      placeholder="收货人"
+      value="{{address.name}}"
+      data-field="name"
+      bindinput="handleInput"
+    />
+    <input 
+      class="input-item"
+      placeholder="手机号码"
+      type="number"
+      value="{{address.phone}}"
+      data-field="phone"
+      bindinput="handleInput"
+    />
+    <picker 
+      mode="region" 
+      value="{{address.region}}"
+      bindchange="handleRegionChange"
+    >
+      <view class="picker-item">
+        <text class="placeholder" wx:if="{{!address.region[0]}}">选择地区</text>
+        <text wx:else>{{address.region[0]}} {{address.region[1]}} {{address.region[2]}}</text>
+      </view>
+    </picker>
+    <textarea 
+      class="textarea-item"
+      placeholder="详细地址"
+      value="{{address.detail}}"
+      data-field="detail"
+      bindinput="handleInput"
+    />
+  </view>
+
+  <view class="save-btn" bindtap="saveAddress">保存</view>
+</view> 

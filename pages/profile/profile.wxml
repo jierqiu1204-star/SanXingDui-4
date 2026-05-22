@@ -1,0 +1,53 @@
+<view class="profile-container">
+  <!-- 添加背景图片 -->
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+
+  <!-- 用户信息区域 -->
+  <view class="user-info" bindtap="handleLogin">
+    <image class="avatar" src="{{userInfo.avatarUrl || '/assets/images/default-avatar.png'}}"></image>
+    <!-- 只在未登录时显示提示文字 -->
+    <view class="login-text" wx:if="{{!userInfo}}">点击头像登录</view>
+    <view class="user-nickname" wx:if="{{nickname}}">{{nickname}}</view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-list">
+    <view class="menu-item" bindtap="navigateToCollection">
+      <view class="menu-content">
+        <image class="menu-icon" src="/assets/images/collection-icon.png"></image>
+        <text>我的收藏</text>
+      </view>
+      <image class="arrow-icon" src="/assets/images/arrow-right.png"></image>
+    </view>
+
+    <view class="menu-item" bindtap="navigateToOrders">
+      <view class="menu-content">
+        <image class="menu-icon" src="/assets/images/order-icon.png"></image>
+        <text>购买订单</text>
+      </view>
+      <image class="arrow-icon" src="/assets/images/arrow-right.png"></image>
+    </view>
+  </view>
+
+  <!-- 添加图标区域 -->
+  <view class="icon-section">
+    <view class="icon-item" bindtap="goToAboutUs">
+      <image src="/images/icon/aboutus.png" mode="aspectFit" class="icon-image"/>
+      <text>关于我们</text>
+    </view>
+    <view class="icon-item" bindtap="goToQuestion">
+      <image src="/images/icon/question.png" mode="aspectFit" class="icon-image"/>
+      <text>留言反馈</text>
+    </view>
+    <view class="icon-item">
+      <image src="/images/icon/gongzhonghao.png" mode="aspectFit" class="icon-image"/>
+      <text>公众号</text>
+    </view>
+  </view>
+
+  <!-- 添加联系信息 -->
+  <view class="contact-info">
+    <text>关注公众号"星梦创学联"</text>
+    <text>合作联系：1260680589@qq.com</text>
+  </view>
+</view>

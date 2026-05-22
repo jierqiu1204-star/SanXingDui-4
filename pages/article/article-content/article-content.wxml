@@ -1,0 +1,8 @@
+<view class="article-content">
+  <image class="banner" mode="aspectFill" src="{{article.image}}"></image>
+  <view class="title">{{article.title}}</view>
+  <view class="content-card">
+    <view class="content-title">正文内容</view>
+    <view class="content">{{article.content}}</view>
+  </view>
+</view> 

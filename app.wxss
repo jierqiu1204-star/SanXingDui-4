@@ -1,0 +1,21 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+/* 首先定义字体 */
+@font-face {
+  font-family: 'STZhongsong';
+  src: url('data:font/truetype;charset=utf-8;base64,AAAA...') format('truetype');
+}
+
+/* 应用到全局 */
+page {
+  font-family: 'STZhongsong';
+} 

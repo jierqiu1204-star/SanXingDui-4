@@ -1,0 +1,83 @@
+page {
+  background-color: #1C392F;
+}
+
+.address-container {
+  padding: 20rpx 30rpx;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+  position: relative;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.address-item {
+  background: #C2CEBD;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.address-content {
+  border-bottom: 1rpx solid rgba(28, 57, 47, 0.1);
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.address-header {
+  display: flex;
+  margin-bottom: 12rpx;
+}
+
+.name {
+  font-size: 28rpx;
+  color: #1C392F;
+  margin-right: 20rpx;
+}
+
+.phone {
+  font-size: 28rpx;
+  color: #1C392F;
+}
+
+.address-detail {
+  font-size: 26rpx;
+  color: rgba(28, 57, 47, 0.8);
+  line-height: 1.4;
+}
+
+.address-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #1C392F;
+}
+
+.action-item radio {
+  margin-right: 8rpx;
+  transform: scale(0.8);
+}
+
+.add-address {
+  position: fixed;
+  bottom: env(safe-area-inset-bottom);
+  left: 30rpx;
+  right: 30rpx;
+  background: #C2CEBD;
+  color: #1C392F;
+  text-align: center;
+  padding: 24rpx 0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+}

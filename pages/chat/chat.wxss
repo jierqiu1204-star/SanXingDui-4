@@ -1,0 +1,205 @@
+page {
+  background-color: #1C392F;
+  height: 100%;
+}
+
+.bg-image {
+  position: fixed;
+  top: -100rpx;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  z-index: -1;
+}
+
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+/* 背景图片 */
+.chat-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/dialog/dialog-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* 欢迎部分样式 */
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+  height: calc(100% - 132rpx);
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 40rpx;
+}
+
+.welcome-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.welcome-text text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 32rpx;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-text text:first-child {
+  color: #FFF5C0;
+}
+
+.welcome-text text:last-child {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 消息列表样式 */
+.message-list {
+  flex: 1;
+  padding: 20rpx;
+  padding-bottom: 120rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.message-item {
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+.message-item.user {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: 0 20rpx;
+}
+
+.message-content {
+  max-width: 60%;
+}
+
+.name {
+  font-size: 24rpx;
+  color: #FFFFFF;
+  margin-bottom: 8rpx;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.content {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 16rpx 24rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  word-break: break-all;
+  display: inline-block;
+  backdrop-filter: blur(5px);
+}
+
+.user .content {
+  background: rgba(194, 206, 189, 0.9);
+  color: #1C392F;
+}
+
+.content-image {
+  max-width: 100%;
+  border-radius: 8rpx;
+}
+
+.time {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 8rpx;
+  text-align: right;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 输入区域样式 */
+.input-area {
+  position: fixed;
+  bottom: -8vw;
+  left: 0;
+  right: 0;
+  padding: 20rpx 10rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  z-index: 2;
+  background-image: url('/images/dialog/dialogue_bubble.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.input-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 36rpx;
+  padding: 0 24rpx;
+  margin-left: -7vw;
+}
+
+.input-box input {
+  flex: 1;
+  height: 72rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 发送按钮 */
+.send-btn {
+  width: 72rpx;
+  height: 72rpx;
+  padding: 12rpx;
+  margin-right:-20vw;
+
+}
+
+.send-btn:active {
+  opacity: 0.8;
+}
+
+/* 功能图标 */
+.voice-icon,
+.camera-icon,
+.emoji-icon {
+  width: 48rpx;
+  height: 48rpx;
+  padding: 10rpx;
+  opacity: 0.8;
+} 

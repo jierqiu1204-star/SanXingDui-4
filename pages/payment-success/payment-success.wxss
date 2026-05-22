@@ -1,0 +1,58 @@
+page {
+  background: #1C392F;
+}
+
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200rpx;
+  position: relative;
+}
+
+.success-icon {
+  width: 160rpx;
+  height: 160rpx;
+  background: #C2CEBD;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.checkmark {
+  width: 80rpx;
+  height: 40rpx;
+  border-left: 8rpx solid #1C392F;
+  border-bottom: 8rpx solid #1C392F;
+  transform: rotate(-45deg);
+  margin-top: -20rpx;
+}
+
+.success-text {
+  font-size: 28rpx;
+  color: #C2CEBD;
+  background: rgba(194, 206, 189, 0.2);
+  padding: 20rpx 40rpx;
+  border-radius: 12rpx;
+}
+
+.back-btn {
+  position: fixed;
+  top: 40px;
+  left: 20rpx;
+  color: #C2CEBD;
+  font-size: 28rpx;
+  padding: 20rpx;
+  z-index: 100;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+} 

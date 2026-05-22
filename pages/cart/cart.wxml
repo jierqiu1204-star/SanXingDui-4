@@ -1,0 +1,102 @@
+<!--pages/cart/cart.wxml-->
+<view class="cart-container">
+  <!-- 添加背景图片 -->
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <icon type="search" size="14" color="#1C392F"/>
+    <input 
+      type="text"
+      placeholder="搜索"
+      value="{{searchValue}}"
+      bindinput="handleSearchInput"
+    />
+    <icon 
+      wx:if="{{searchValue}}"
+      type="clear" 
+      size="14" 
+      color="#1C392F"
+      bindtap="clearSearch"
+    />
+  </view>
+
+  <!-- 购物车列表 -->
+  <view class="cart-list">
+    <block wx:if="{{cartItems.length > 0}}">
+      <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
+        <!-- 普通商品 -->
+        <block wx:if="{{!item.type || item.type === 'product'}}">
+          <view class="select-circle" bindtap="toggleSelect" data-id="{{item.id}}">
+            <view class="inner-circle {{item.selected ? 'selected' : ''}}"></view>
+          </view>
+          <image class="product-image" src="{{item.image}}" mode="aspectFill"/>
+          <view class="product-info">
+            <view class="product-name">{{item.name}}</view>
+            <view class="product-spec" bindtap="selectSpec" data-id="{{item.id}}">
+              {{item.spec}}
+              <text class="arrow">></text>
+            </view>
+            <view class="product-bottom">
+              <text class="price">{{item.price}} </text>
+              <view class="quantity-control">
+                <text 
+                  class="minus" 
+                  bindtap="changeQuantity" 
+                  data-id="{{item.id}}" 
+                  data-type="minus"
+                >-</text>
+                <text class="quantity">{{item.quantity}}</text>
+                <text 
+                  class="plus" 
+                  bindtap="changeQuantity" 
+                  data-id="{{item.id}}" 
+                  data-type="add"
+                >+</text>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <!-- 课程 -->
+        <block wx:if="{{item.type === 'course'}}">
+          <view class="select-circle" bindtap="toggleSelect" data-id="{{item.id}}">
+            <view class="inner-circle {{item.selected ? 'selected' : ''}}"></view>
+          </view>
+          <view class="course-info">
+            <text class="course-title">{{item.title}}</text>
+            <text class="course-price">{{item.price}}</text>
+          </view>
+        </block>
+
+        <view class="delete-btn" bindtap="removeFromCart" data-index="{{index}}">删除</view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 规格选择弹窗 -->
+  <view class="spec-popup-mask" wx:if="{{showSpecPopup}}" bindtap="closeSpecPopup"></view>
+  <view class="spec-popup {{showSpecPopup ? 'show' : ''}}">
+    <view class="popup-header">
+      <text>选择规格</text>
+      <view class="popup-close" bindtap="closeSpecPopup">×</view>
+    </view>
+    <view class="spec-list">
+      <view 
+        class="spec-item {{currentItem.spec === item.name ? 'selected' : ''}}"
+        wx:for="{{specOptions}}"
+        wx:key="id"
+        bindtap="handleSpecSelect"
+        data-spec="{{item}}"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部结算栏 -->
+  <view class="bottom-bar">
+    <view class="total">合计: {{total}} ¥</view>
+    <view class="confirm-btn" bindtap="confirmOrder">确认订单</view>
+  </view>
+</view>

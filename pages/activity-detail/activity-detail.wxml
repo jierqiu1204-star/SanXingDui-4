@@ -1,0 +1,12 @@
+<view class="activity-detail" bindtap="onTapArticle">
+  <image class="banner" mode="aspectFill" src="{{article.image}}"></image>
+  <view class="main-card">
+    <view class="header">
+      <view class="title">{{article.title}}</view>
+      <view class="date">{{article.date}}</view>
+    </view>
+    <view class="content-card">
+      <view class="content">{{article.content}}</view>
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,41 @@
+page {
+  background: #1C392F;
+}
+
+.feedback-container {
+  padding: 20rpx;
+  position: relative;
+}
+
+.feedback-form {
+  background: #C2CEBD;
+  border-radius: 16rpx;
+  padding: 30rpx;
+}
+
+.feedback-input {
+  width: 100%;
+  height: 300rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+}
+
+.submit-btn {
+  background: #1C392F;
+  color: #FFFFFF;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+}
+
+/* 添加背景图片样式 */
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+} 

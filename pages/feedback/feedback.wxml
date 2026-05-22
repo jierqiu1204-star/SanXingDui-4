@@ -1,0 +1,14 @@
+<view class="feedback-container">
+  <!-- 添加背景图片 -->
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+  
+  <view class="feedback-form">
+    <textarea 
+      placeholder="请输入您的留言内容..."
+      class="feedback-input"
+      bindinput="handleInput"
+      value="{{content}}"
+    ></textarea>
+    <button class="submit-btn" bindtap="submitFeedback">提交留言</button>
+  </view>
+</view> 

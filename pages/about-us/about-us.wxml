@@ -1,0 +1,10 @@
+<view class="about-container">
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+  <image src="/images/icon/gzhtu.jpg" mode="widthFix" class="about-image"/>
+  <view class="about-content">
+    <view class="about-title">关于我们</view>
+    <view class="about-text">
+      星梦创学联团队是由华东师范大学多名本科生共同创立的大学生自主创业团队。我们致力于通过跨文化教育、双语研学课程及IP打造，探索创新教育模式，将多元文化与学科知识相结合。项目以研学课程、教育教具包为核心，辅以文创产品，面向学校、博物馆、教育机构提供高质量文化教育方案。我们希望让更多学生在沉浸式学习体验中感受中华文明的独特魅力，拓展国际视野，增强文化自信。.
+    </view>
+  </view>
+</view> 

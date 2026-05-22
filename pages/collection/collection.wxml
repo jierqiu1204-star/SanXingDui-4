@@ -1,0 +1,48 @@
+<view class="collection-container">
+  <!-- 添加背景图片 -->
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+
+  <!-- 标签切换 -->
+  <view class="tabs">
+    <view class="tab {{activeTab === 'activity' ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-tab="activity">
+      活动推送
+    </view>
+    <view class="tab {{activeTab === 'article' ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-tab="article">
+      科普文章
+    </view>
+  </view>
+
+  <!-- 活动列表 -->
+  <view class="content-list" wx:if="{{activeTab === 'activity'}}">
+    <view class="item" 
+          wx:for="{{activities}}" 
+          wx:key="id"
+          bindtap="onTapActivity" 
+          data-id="{{item.id}}">
+      <image class="item-image" mode="aspectFill" src="{{item.image}}"></image>
+      <view class="item-info">
+        <text class="item-title">{{item.title}}</text>
+        <text class="item-date">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 文章列表 -->
+  <view class="content-list" wx:if="{{activeTab === 'article'}}">
+    <view class="item" 
+          wx:for="{{articles}}" 
+          wx:key="id"
+          bindtap="onTapArticle" 
+          data-id="{{item.id}}">
+      <image class="item-image" mode="aspectFill" src="{{item.image}}"></image>
+      <view class="item-info">
+        <text class="item-title">{{item.title}}</text>
+        <text class="item-date">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+</view> 

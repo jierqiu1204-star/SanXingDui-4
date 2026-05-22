@@ -1,0 +1,198 @@
+<view class="order-detail">
+  <!-- 添加背景图片 -->
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+
+  <!-- 商品信息 -->
+  <view class="section product-section">
+    <!-- 循环显示所有商品 -->
+    <block wx:for="{{order.products}}" wx:key="id">
+      <view class="product-info">
+        <image class="product-image" src="{{item.image}}" mode="aspectFill"/>
+        <view class="product-details">
+          <view class="product-name">{{item.name}}</view>
+          <view class="product-spec">{{item.spec}}</view>
+          <view class="price-quantity">
+            <text>{{item.price}}</text>
+            <text class="quantity">x{{item.quantity}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="total-paid">
+      <text>实付：</text>
+      <text class="amount">{{order.totalPaid}}</text>
+    </view>
+  </view>
+
+  <!-- 收货人信息 -->
+  <view class="section buyer-section" bindtap="goToAddress">
+    <view class="buyer-info">
+      <view class="buyer-header">
+        <text class="buyer-name">{{order.buyer.name}}</text>
+        <text class="buyer-phone">{{order.buyer.phone}}</text>
+      </view>
+      <view class="buyer-address">{{order.buyer.address}}</view>
+    </view>
+    <view class="arrow">></view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="section order-section">
+    <view class="order-item">
+      <text class="label">订单编号</text>
+      <text class="value" bindtap="copyOrderNumber">{{order.orderInfo.orderNumber}}</text>
+    </view>
+    <view class="order-item">
+      <text class="label">支付方式</text>
+      <text class="value">{{order.orderInfo.paymentMethod}}</text>
+    </view>
+    <view class="order-item">
+      <text class="label">物流公司</text>
+      <text class="value">{{order.orderInfo.shippingMethod}}</text>
+    </view>
+    <view class="order-item">
+      <text class="label">快递单号</text>
+      <text class="value" bindtap="copyTrackingNumber">{{order.orderInfo.trackingNumber}}</text>
+    </view>
+    <view class="order-item">
+      <text class="label">下单时间</text>
+      <text class="value">{{order.orderInfo.orderTime}}</text>
+    </view>
+    <view class="order-item">
+      <text class="label">发货时间</text>
+      <text class="value">{{order.orderInfo.deliveryTime}}</text>
+    </view>
+  </view>
+
+  <!-- 修改底部导航栏部分 -->
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="handleConfirmReceipt">
+      确认收货
+    </view>
+    <view class="nav-item" bindtap="handleCheckLogistics">
+      查看物流
+    </view>
+    <view class="nav-item" bindtap="handleAfterSale">
+      申请售后
+    </view>
+    <view class="nav-item" bindtap="handleContactSeller">
+      联系商家
+    </view>
+  </view>
+
+  <!-- 售后原因选择弹出层 -->
+  <view class="popup-mask" wx:if="{{showAfterSalePopup}}" bindtap="closeAfterSalePopup"></view>
+  <view class="popup-content {{showAfterSalePopup ? 'show' : ''}}">
+    <view class="popup-header">
+      <text class="popup-title">选择售后原因</text>
+      <view class="popup-close" bindtap="closeAfterSalePopup">×</view>
+    </view>
+    
+    <view class="reasons-list">
+      <view class="reason-item" 
+            wx:for="{{afterSaleReasons}}" 
+            wx:key="id"
+            bindtap="toggleReason" 
+            data-id="{{item.id}}">
+        <text>{{item.text}}</text>
+        <view class="checkbox {{item.checked ? 'checked' : ''}}"></view>
+      </view>
+    </view>
+
+    <view class="popup-button" bindtap="submitAfterSale">下一步</view>
+  </view>
+
+  <!-- 售后类型选择弹出层 -->
+  <view class="popup-mask" wx:if="{{showAfterSaleTypePopup}}" bindtap="closeAfterSaleTypePopup"></view>
+  <view class="popup-content {{showAfterSaleTypePopup ? 'show' : ''}}">
+    <view class="popup-header">
+      <text class="popup-title">选择售后类型</text>
+      <view class="popup-close" bindtap="closeAfterSaleTypePopup">×</view>
+    </view>
+    
+    <view class="reasons-list">
+      <view class="reason-item" 
+            wx:for="{{afterSaleTypes}}" 
+            wx:key="id"
+            bindtap="toggleType" 
+            data-id="{{item.id}}">
+        <text>{{item.text}}</text>
+        <view class="checkbox {{item.checked ? 'checked' : ''}}"></view>
+      </view>
+    </view>
+
+    <view class="popup-button" bindtap="submitAfterSaleType">下一步</view>
+  </view>
+
+  <!-- 在现有弹出层后添加 -->
+  <view class="popup-mask" wx:if="{{showAfterSaleFormPopup}}" bindtap="closeAfterSaleFormPopup"></view>
+  <view class="popup-content form-popup {{showAfterSaleFormPopup ? 'show' : ''}}">
+    <view class="popup-header">
+      <text class="popup-title">提交售后申请</text>
+      <view class="popup-close" bindtap="closeAfterSaleFormPopup">×</view>
+    </view>
+
+    <!-- 订单信息 -->
+    <view class="order-info">
+      <image class="product-image" src="{{order.product.image}}" mode="aspectFill"/>
+      <view class="product-details">
+        <view class="product-name">{{order.product.name}}</view>
+        <view class="product-spec">{{order.product.specification}}</view>
+        <view class="price-info">
+          <text>{{order.product.price}}</text>
+          <text class="quantity">{{order.product.quantity}}</text>
+          <text class="total">实付：{{order.product.totalPaid}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 修改买家信息部分的代码 -->
+<view class="buyer-section" bindtap="goToAddress">
+  <view class="buyer-info">
+    <view class="buyer-header">
+      <text class="buyer-name">{{order.buyer.name}}</text>
+      <text class="buyer-phone">{{order.buyer.phone}}</text>
+    </view>
+    <view class="buyer-address">{{order.buyer.address}}</view>
+  </view>
+  <view class="arrow">></view>
+</view>
+
+    <!-- 货物状态和退款原因 -->
+    <view class="info-item">
+      <text class="label">货物状态</text>
+      <text class="value">{{goodsStatus}} ></text>
+    </view>
+    <view class="info-item">
+      <text class="label">退款原因</text>
+      <text class="value">{{refundReason}} ></text>
+    </view>
+
+    <!-- 问题描述 -->
+    <view class="description-section">
+      <text class="section-title">上传描述和凭证</text>
+      <textarea 
+        class="description-input"
+        placeholder="填写文字..."
+        value="{{description}}"
+        bindinput="handleDescriptionInput"
+      ></textarea>
+
+      <!-- 图片上传 -->
+      <view class="image-upload">
+        <view class="image-list">
+          <view class="image-item" wx:for="{{images}}" wx:key="index">
+            <image src="{{item}}" mode="aspectFill"/>
+            <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+          </view>
+          <view class="upload-btn" bindtap="chooseImage" wx:if="{{images.length < 9}}">
+            <image src="/assets/images/camera-icon.png" mode="aspectFit"/>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="submit-btn" bindtap="submitApplication">提交申请</view>
+  </view>
+</view> 

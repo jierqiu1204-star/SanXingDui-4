@@ -1,0 +1,10 @@
+<view class="success-container">
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+  
+  <view class="back-btn" bindtap="goToCart">返回购物车</view>
+  
+  <view class="success-icon">
+    <view class="checkmark"></view>
+  </view>
+  <view class="success-text">{{countdown}}秒后跳转到购物车......</view>
+</view> 

@@ -1,0 +1,77 @@
+page {
+  background-color: #1C392F;
+}
+
+.login-container {
+  padding: 60rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-container {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.default-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  opacity: 0.6;
+}
+
+.login-btn {
+  width: 100% !important;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  margin-bottom: 40rpx;
+  text-align: center;
+  padding: 0 !important;
+}
+
+.login-btn.disabled {
+  opacity: 0.5;
+}
+
+.privacy-container {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.checkbox {
+  width: 32rpx;
+  height: 32rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.6);
+  border-radius: 8rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-inner {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 8rpx;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.privacy-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 26rpx;
+}
+
+.privacy-link {
+  color: #FFFFFF;
+  text-decoration: underline;
+} 

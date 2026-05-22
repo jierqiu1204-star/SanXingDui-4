@@ -1,0 +1,58 @@
+<view class="orders-container">
+  <!-- 添加背景图片 -->
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <icon type="search" size="14" color="#1C392F"/>
+    <input 
+      type="text" 
+      placeholder="搜索" 
+      placeholder-class="placeholder"
+      bindinput="handleSearch"
+    />
+  </view>
+
+  <!-- 导航标签 -->
+  <scroll-view scroll-x class="tabs">
+    <view class="tabs-content">
+      <view 
+        wx:for="{{tabs}}" 
+        wx:key="*this"
+        class="tab {{currentTab === item ? 'active' : ''}}"
+        bindtap="switchTab"
+        data-tab="{{item}}"
+      >
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 订单列表 -->
+  <view class="orders-list">
+    <view class="order-item" wx:for="{{filteredOrders}}" wx:key="id">
+      <!-- 点击商品区域跳转到订单详情 -->
+      <view bindtap="onTapOrder" data-id="{{item.id}}">
+        <view class="product-info" wx:for="{{item.products}}" wx:key="id" wx:for-item="product">
+          <image class="product-image" src="{{product.image}}" mode="aspectFill"/>
+          <view class="product-details">
+            <view class="product-name">{{product.name}}</view>
+            <view class="product-spec">{{product.spec}}</view>
+            <view class="price-quantity">
+              <text>{{product.price}}</text>
+              <text class="quantity">x{{product.quantity}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="total-paid">
+          <text>实付：</text>
+          <text class="amount">{{item.totalPaid}}</text>
+        </view>
+      </view>
+      <!-- 添加删除按钮 -->
+      <view class="order-actions">
+        <view class="delete-btn" catchtap="deleteOrder" data-id="{{item.id}}">删除订单</view>
+      </view>
+    </view>
+  </view>
+</view> 

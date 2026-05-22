@@ -1,0 +1,381 @@
+page {
+  background-color: #1C392F;
+}
+
+.order-detail {
+  padding: 20rpx 30rpx;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+  position: relative;
+}
+
+/* 添加背景图片样式 */
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.section {
+  background: #C2CEBD;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 商品信息样式 */
+.product-info {
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.product-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+  background: #1C392F;
+  margin-right: 20rpx;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-name {
+  font-size: 28rpx;
+  color: #1C392F;
+  margin-bottom: 8rpx;
+}
+
+.product-spec {
+  font-size: 24rpx;
+  color: rgba(28, 57, 47, 0.6);
+  margin-bottom: 16rpx;
+}
+
+.price-quantity {
+  font-size: 26rpx;
+  color: #1C392F;
+}
+
+.quantity {
+  margin-left: 16rpx;
+  color: rgba(28, 57, 47, 0.6);
+}
+
+.total-paid {
+  text-align: right;
+  font-size: 26rpx;
+  color: #1C392F;
+}
+
+.amount {
+  font-weight: bold;
+}
+
+/* 买家信息样式 */
+.buyer-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.buyer-name, .buyer-phone {
+  font-size: 28rpx;
+  color: #1C392F;
+}
+
+.buyer-address {
+  font-size: 26rpx;
+  color: rgba(28, 57, 47, 0.8);
+  line-height: 1.4;
+}
+
+/* 订单信息样式 */
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  margin-bottom: 16rpx;
+}
+
+.order-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  color: rgba(28, 57, 47, 0.6);
+}
+
+.value {
+  color: #1C392F;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background: #C2CEBD;
+  padding: 20rpx 0;
+  padding-bottom: env(safe-area-inset-bottom); /* 适配iPhone X等机型 */
+}
+
+.nav-item {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+  color: #1C392F;
+  position: relative;
+}
+
+.nav-item.active {
+  font-weight: bold;
+}
+
+/* 添加中间的黑色条 */
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -10rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 4rpx;
+  background: #1C392F;
+  border-radius: 2rpx;
+}
+
+.popup-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.popup-content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #C2CEBD;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 30rpx;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 101;
+}
+
+.popup-content.show {
+  transform: translateY(0);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.popup-title {
+  font-size: 32rpx;
+  color: #1C392F;
+  font-weight: bold;
+}
+
+.popup-close {
+  font-size: 40rpx;
+  color: #1C392F;
+  padding: 10rpx;
+}
+
+.reasons-list {
+  margin-bottom: 40rpx;
+}
+
+.reason-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #1C392F;
+  border-bottom: 1rpx solid rgba(28, 57, 47, 0.1);
+}
+
+.checkbox {
+  width: 36rpx;
+  height: 36rpx;
+  border: 2rpx solid #1C392F;
+  border-radius: 50%;
+  position: relative;
+}
+
+.checkbox.checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24rpx;
+  height: 24rpx;
+  background: #1C392F;
+  border-radius: 50%;
+}
+
+.popup-button {
+  background: rgba(28, 57, 47, 0.1);
+  color: #1C392F;
+  text-align: center;
+  padding: 24rpx 0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+}
+
+/* 在现有样式后添加 */
+.form-popup {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.order-info {
+  background: rgba(28, 57, 47, 0.05);
+  padding: 20rpx;
+  border-radius: 12rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+}
+
+.product-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.price-info {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: rgba(28, 57, 47, 0.8);
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid rgba(28, 57, 47, 0.1);
+  font-size: 28rpx;
+}
+
+.description-section {
+  margin-top: 30rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #1C392F;
+  margin-bottom: 16rpx;
+}
+
+.description-input {
+  width: 100%;
+  height: 200rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.image-upload {
+  margin-top: 20rpx;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.image-item {
+  width: 160rpx;
+  height: 160rpx;
+  position: relative;
+}
+
+.image-item image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: rgba(0, 0, 0, 0.5);
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-btn {
+  width: 160rpx;
+  height: 160rpx;
+  background: rgba(28, 57, 47, 0.05);
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-btn image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.submit-btn {
+  margin-top: 40rpx;
+  background: rgba(28, 57, 47, 0.1);
+  color: #1C392F;
+  text-align: center;
+  padding: 24rpx 0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+}
+
+/* 在现有样式中添加 */
+.buyer-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx;
+  background: #C2CEBD;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.buyer-info {
+  flex: 1;
+}
+
+.arrow {
+  color: #1C392F;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}

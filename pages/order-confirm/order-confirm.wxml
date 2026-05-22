@@ -1,0 +1,117 @@
+<view class="confirm-container">
+  <!-- 添加背景图片 -->
+  <image class="background-image" src="/images/background.png" mode="aspectFill"></image>
+
+  <!-- 收货地址 -->
+  <view class="address-section" bindtap="goToAddress">
+    <block wx:if="{{address}}">
+      <view class="address-info">
+        <view class="address-header">
+          <text class="name">{{address.name}}</text>
+          <text class="phone">{{address.phone}}</text>
+        </view>
+        <view class="address-detail">{{address.address}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="address-info">
+        <view class="address-placeholder">请选择收货地址</view>
+      </view>
+    </block>
+    <view class="arrow">></view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="products-section">
+    <view class="product-item" wx:for="{{products}}" wx:key="id">
+      <image class="product-image" src="{{item.image}}" mode="aspectFill"/>
+      <view class="product-info">
+        <view class="product-name">{{item.name}}</view>
+        <view class="product-spec">{{item.spec}}</view>
+        <view class="product-price-qty">
+          <text>{{item.price}} </text>
+          <text>x{{item.quantity}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order-info">
+    <view class="info-item">
+      <text>商品总价</text>
+      <text>{{orderInfo.productTotal}} </text>
+    </view>
+    <view class="info-item">
+      <text>运费</text>
+      <text>{{orderInfo.shipping}} </text>
+    </view>
+    <view class="info-item total">
+      <text>合计</text>
+      <text>{{orderInfo.total}} </text>
+    </view>
+  </view>
+
+  <!-- 支付方式 -->
+  <view class="payment-section" bindtap="showPaymentSelector">
+    <text>支付方式</text>
+    <view class="payment-method">
+      {{selectedPayment}}
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view class="note-section" bindtap="addNote">
+    <text>备注</text>
+    <view class="note-content">
+      <text wx:if="{{note}}">{{note}}</text>
+      <text wx:else class="placeholder">点击添加备注</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 底部确认栏 -->
+  <view class="bottom-bar">
+    <view class="total-price">合计: {{orderInfo.total}} </view>
+    <view class="confirm-btn" bindtap="confirmOrder">确认订单</view>
+  </view>
+
+  <!-- 支付方式选择弹窗 -->
+  <view class="popup-mask" wx:if="{{showPaymentPopup}}" bindtap="closePaymentPopup"></view>
+  <view class="popup {{showPaymentPopup ? 'show' : ''}}">
+    <view class="popup-header">
+      <text>选择支付方式</text>
+      <view class="popup-close" bindtap="closePaymentPopup">×</view>
+    </view>
+    <view class="payment-list">
+      <view 
+        class="payment-option" 
+        wx:for="{{paymentMethods}}" 
+        wx:key="id"
+        bindtap="selectPayment"
+        data-method="{{item.name}}"
+      >
+        <text>{{item.name}}</text>
+        <view class="radio-circle {{selectedPayment === item.name ? 'selected' : ''}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 备注输入弹窗 -->
+  <view class="popup-mask" wx:if="{{showNotePopup}}" bindtap="closeNotePopup"></view>
+  <view class="popup {{showNotePopup ? 'show' : ''}}">
+    <view class="popup-header">
+      <text>添加备注</text>
+      <view class="popup-close" bindtap="closeNotePopup">×</view>
+    </view>
+    <view class="note-input-area">
+      <textarea 
+        placeholder="请输入备注信息（选填）"
+        value="{{note}}"
+        bindinput="handleNoteInput"
+      ></textarea>
+    </view>
+    <view class="popup-button" bindtap="confirmNote">确认</view>
+  </view>
+</view> 

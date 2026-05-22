@@ -1,0 +1,43 @@
+<!--pages/mall/mall.wxml-->
+<image class="bg-image" src="/images/common/background_mall.png" />
+<view class="mall">
+
+  <!-- 文创商品部分 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">文创商品</text>
+      <text class="section-more" bindtap="onTapMoreProducts">更多 ></text>
+    </view>
+    <view class="product-list">
+      <view class="product-item" 
+            wx:for="{{products}}" 
+            wx:key="id"
+            bindtap="onTapProduct"
+            data-id="{{item.id}}">
+        <image class="product-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="product-info">
+          <text class="product-title">{{item.title}}</text>
+          <text class="product-price">{{item.price}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 文教课程部分 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">文教课程</text>
+      <text class="section-more" bindtap="onTapMoreCourses">更多 ></text>
+    </view>
+    <view class="course-list">
+      <view class="course-item" 
+            wx:for="{{courses}}" 
+            wx:key="id"
+            bindtap="onTapCourse"
+            data-id="{{item.id}}">
+        <image class="course-image" src="{{item.image}}" mode="aspectFill"></image>
+        <text class="course-title">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+</view>

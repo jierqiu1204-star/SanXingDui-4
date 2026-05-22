@@ -1,0 +1,69 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <image class="bg-image" src="/images/common/background.png" />
+  <view class="container">
+
+    <!-- 主要内容区域 -->
+    <view class="main-section">
+      <!-- 活动介绍模块 -->
+      <view class="module">
+        <view class="section-header">
+          <text class="section-title">活动介绍</text>
+          <text class="section-more" bindtap="onTapMoreActivities">更多 ></text>
+        </view>
+        <view class="activity-list">
+          <view class="activity-item" wx:for="{{activities}}" wx:key="id">
+            <image class="activity-image" mode="aspectFill" src="{{item.image}}" bindtap="onTapActivity" data-id="{{item.id}}"></image>
+            <view class="activity-info">
+              <view class="activity-title-row">
+                <text class="activity-text">{{item.title}}</text>
+                <view class="collect-btn" catchtap="toggleCollect" data-id="{{item.id}}">
+                  <image class="star-icon" src="/images/icon/{{item.isCollected ? 'star-filled.png' : 'star.png'}}"></image>
+                </view>
+              </view>
+              <text class="activity-date">{{item.date}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 科普文章模块 -->
+      <view class="module">
+        <view class="section-header">
+          <text class="section-title">科普文章</text>
+          <text class="section-more" bindtap="onTapMoreArticles">更多 ></text>
+        </view>
+        <view class="article-list">
+          <view class="article-item">
+            <image class="article-image" mode="aspectFill" src="{{articles[0].image}}" bindtap="onTapArticle"></image>
+            <view class="article-info">
+              <view class="article-title-row">
+                <text class="article-text">{{articles[0].title}}</text>
+                <view class="collect-btn" catchtap="toggleArticleCollect" data-id="{{articles[0].id}}">
+                  <image class="star-icon" src="/images/icon/{{articles[0].isCollected ? 'star-filled.png' : 'star.png'}}"></image>
+                </view>
+              </view>
+              <text class="article-date">{{articles[0].date}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 课程介绍模块 -->
+      <view class="module">
+        <view class="section-header">
+          <text class="section-title">课程介绍</text>
+          <view class="section-more" bindtap="onTapMoreCourses">更多 ></view>
+        </view>
+        <view class="article-list">
+          <view class="article-item" bindtap="goToArticleDetail">
+            <image class="article-image" mode="aspectFill" src="/images/article/logo.jpg"></image>
+            <view class="article-card">
+              <text class="article-text">文章标题文章标题</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
